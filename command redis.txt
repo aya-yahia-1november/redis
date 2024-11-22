@@ -1,0 +1,56 @@
+
+hostname -I
+###add stream 
+XADD mystream * name "Alice" age 30
+###ranage
+XRANGE mystream - +
+XREVRANGE mystream + - COUNT 1
+###delete 
+xdel mystream 1731396536173-0
+
+
+##read one
+ XREAD STREAMS mystream +
+##read  tow streams 
+XREAD COUNT 2 STREAMS mystream request 0-0 0-0 ==  XREAD COUNT 2 STREAMS mystream request 0-0 0-0
+
+
+
+### create group in redis 
+
+
+XGROUP CREATE mystream mygroup-1 $
+XGROUP CREATE mystream mygroup-2 0
+##consumer
+XREADGROUP GROUP mygroup consumer1 COUNT 10 STREAMS mystream >
+XREADGROUP GROUP g1 consumer1 COUNT 10 STREAMS request >
+XREADGROUP GROUP g1 consumer1 STREAMS request >
+
+#ack
+XACK mystream mygroup 1731405384831-0
+## panding
+XPENDING mystream mygroup
+
+
+
+### transaction 
+
+MULTI
+SET key1 "value1"
+INCR counter
+EXEC
+## terminate transaction
+DISCARD
+
+##watch method 
+
+set counter 10
+
+WATCH counter
+set counter "aya"
+##change counter from another client
+
+EXEC
+
+### flushing data 
+flushdb
