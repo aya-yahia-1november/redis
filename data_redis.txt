@@ -1,0 +1,17 @@
+XADD mystream * Source "web" Amount 250
+XADD mystream * Source "linkedin" Amount 300
+XADD mystream * Source "web" Amount 400
+XADD mystream * Source "facebook" Amount 150
+XADD mystream * Source "facebook" Amount 350
+XADD mystream * Source "tw" Amount 500
+XADD mystream * Source "academic" Amount 200
+XADD mystream * Source "web" Amount 450
+XADD mystream * Source "instegram" Amount 600
+XADD mystream * Source "facebook" Amount 700
+XADD mystream * Source "web" Amount 250
+XADD mystream * Source "presonal_sourse" Amount 300
+XADD mystream * Source "web" Amount 800
+XADD mystream * Source "facebook" Amount 550
+XADD mystream * Source "facebok" Amount 400
+
+
